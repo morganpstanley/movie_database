@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     def show
+        @user = User.find_by(username: params[:username])
     end
     
     def index
@@ -12,7 +13,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)   
+        @user = User.new(user_params) 
+        if @user.save
+            redirect_to user_path(@user)
+        else
+            render :new
+        end  
     end
 
 private
@@ -22,7 +28,7 @@ private
     end
 
     def require_login
-        return head(:forbidden) unless session.include? :user_id
+        return head(:forbidden) unless session.include?(:user_id)
     end
 
 end
