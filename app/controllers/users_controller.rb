@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     end
     
     def index
+        @users = User.all
     end
 
     def new
@@ -11,8 +12,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        binding.pry
-        @user = User.new(user_params)
+        @user = User.new(user_params)   
     end
 
 private
