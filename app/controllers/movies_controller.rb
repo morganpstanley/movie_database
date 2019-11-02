@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
     def show
-        @movie
+        @movie = Movie.find_by(name: params[:name])
     end
     
     def index
@@ -24,11 +24,11 @@ class MoviesController < ApplicationController
 private
 
     def movie_params
-        params.require(:movie).permit(:name, :director, :release_year :genre)
+        params.require(:movie).permit(:name, :director, :release_year, :genre)
     end
 
     def require_login
-        return head(:forbidden) unless session.include? :user_id
+        return head(:forbidden) unless session.include?(:user_id)
     end
 
 end
