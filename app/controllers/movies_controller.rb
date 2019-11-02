@@ -9,11 +9,11 @@ class MoviesController < ApplicationController
     end
 
     def new
-        @movie = User.new
+        @movie = Movie.new
     end
 
     def create
-        @movie = User.new(movie_params)
+        @movie = Movie.new(movie_params)
         if @movie.save
             redirect_to movie_path(@movie)
         else
@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
 private
 
     def movie_params
-        params.require(:movie).permit(:name, :director, :release_year, :genre)
+        params.require(:movie).permit(:name, :director, :release_date, :genre)
     end
 
     def require_login
