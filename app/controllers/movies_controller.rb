@@ -1,24 +1,30 @@
 class MoviesController < ApplicationController
 
     def show
+        @movie
     end
     
     def index
+        @movies = Movie.all
     end
 
     def new
-        @user = User.new
+        @movie = User.new
     end
 
     def create
-        binding.pry
-        @user = User.new(user_params)
+        @movie = User.new(movie_params)
+        if @movie.save
+            redirect_to movie_path(@movie)
+        else
+            render :new
+        end
     end
 
 private
 
-    def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :email)
+    def movie_params
+        params.require(:movie).permit(:name, :director, :release_year :genre)
     end
 
     def require_login
