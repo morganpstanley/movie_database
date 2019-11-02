@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
     def show
-        @movie = Movie.find_by(name: params[:name])
+        @movie = Movie.find_by(id: params[:id])
     end
     
     def index
