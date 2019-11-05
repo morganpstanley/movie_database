@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do 
+    resources :movies, only: [:index]
+  end
+
   resources :movies
   
   get '/login', to: 'users#signin'

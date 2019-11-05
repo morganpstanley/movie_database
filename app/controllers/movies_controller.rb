@@ -5,7 +5,11 @@ class MoviesController < ApplicationController
     end
     
     def index
-        @movies = Movie.all
+        if params[:user_id]
+            @movies = User.find_by(id: params[:user_id]).movies
+        else
+            @movies = Movie.all
+        end
     end
 
     def new
