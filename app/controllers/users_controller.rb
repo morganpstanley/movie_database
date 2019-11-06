@@ -41,6 +41,14 @@ class UsersController < ApplicationController
         redirect_to login_path
     end
 
+    def add_movie
+        movie = Movie.find_by(id: params.require(:movie_id))
+        if current_user.movies.exclude?(movie)
+            current_user.movies << movie
+        end
+        redirect_to user_movies_path(current_user)
+    end
+
 private
 
     def user_params

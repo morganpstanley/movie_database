@@ -1,3 +1,13 @@
 <% @movies.each do |m| %>
 <%= link_to m.name, movie_path(m) %> User Rating: <%= m.avg_rating%> <br>
 <% end %>
+
+<br>
+<br>
+
+<% if current_user %>
+    <%= form_tag "/users/#{current_user.id}/movies" %>
+    <%= select_tag "movie_id",
+    options_from_collection_for_select(Movie.all, "id", "name") %>
+    <%= submit_tag "Add Movie" %>
+<% end %>
