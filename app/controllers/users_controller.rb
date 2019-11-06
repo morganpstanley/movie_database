@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     def add_movie
         movie = Movie.find_by(id: params.require(:movie_id))
         if current_user.movies.exclude?(movie)
-            current_user.movies << movie
+            UserMovie.create(movie_id: movie.id, user_id: current_user.id, rating: params.require(:rating))
         end
         redirect_to user_movies_path(current_user)
     end
