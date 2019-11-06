@@ -5,13 +5,15 @@ class Movie < ApplicationRecord
     validates :name, :director, :genre, presence: true
 
     def avg_rating
-        movies = UserMovie.select{ |m| m.movie_id == self.id}
-        if movies != []
+        movie_owners = UserMovie.select{ |m| m.movie_id == self.id}
+        if movie_owners != [] && movie_owners.any?{ |m| m.rating }
             rating_count = 0.0
-            movies.each do |m|
-                rating_count += m.rating
+            movie_owners.each do |m|
+                if m.rating
+                    rating_count += m.rating
+                end
             end
-            "#{(rating_count / movies.count).round(2)}/10"
+            "#{(rating_count / movie_owners.count).round(2)}/10"
         else
             "Not enough votes"
         end
