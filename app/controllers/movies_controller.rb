@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
     def index
         if params[:user_id]
             @movies = User.find_by(id: params[:user_id]).movies
+            @user = current_user
         else
             @movies = Movie.all
         end
