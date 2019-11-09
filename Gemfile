@@ -20,6 +20,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'dotenv-rails'
+gem 'thin', group: :development
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
