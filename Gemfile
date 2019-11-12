@@ -24,6 +24,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'thin', group: :development
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
