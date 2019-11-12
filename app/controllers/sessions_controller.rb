@@ -1,24 +1,26 @@
 class SessionsController < ApplicationController
 
-    def create
-        User.find_or_create_by_omniauth(auth)
-        redirect_to '/users'
+    def signin
+        user = User.new
     end
 
-    # def create
-    #     binding.pry
-    #     @user = User.find_or_create_by(uid: auth['uid']) do |u|
-    #         u.username = auth['info']['nickname']
-    #         u.email = auth['info']['email']
-    #         u.password = SecureRandom.hex
-    #     end
-    #    binding.pry
-    #     session[:user_id] = @user.id
-       
-    #     redirect_to '/users/'
-    # end
+    def create
+        if auth
+            user = User.find_or_create_by_omniauth(auth)
+            session[:user_id] = user.id
+            redirect_to '/users'
+        else
+            user = User.find_by(email: params[:email])
+            if user && user.authenticate(params[:password])
+                session[:user_id] = user.id
+                redirect_to '/users'
+            else
+                render :login
+            end
+        end
+    end
 
-    def destroy
+    def logout
         session.destroy
         redirect_to login_path
     end
