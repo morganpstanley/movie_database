@@ -1,8 +1,10 @@
 <%= @user.username %> <br>
-<%= @user.email %>
+<%= @user.email %> 
+
+<br><br>
 
 <% if @user == current_user %>
-    <%= link_to "See Your Movies", user_movies_path(@user) %>
+    <%= link_to "See Your Movies", user_movies_path(@user) %> <br>
 <% else %>
-    <%= link_to "See #{@user.username}'s Movies", user_movies_path(@user) %>
+    <%= link_to "See #{@user.username}'s Movies", user_movies_path(@user) %> <br>
 <% end %>
