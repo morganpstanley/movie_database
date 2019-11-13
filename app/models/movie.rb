@@ -4,6 +4,8 @@ class Movie < ApplicationRecord
 
     validates :name, :director, :genre, presence: true
 
+    scope :released_before, ->(date) {where("release_date < ?", date)}
+
     def avg_rating
         movie_owners = UserMovie.select{ |m| m.movie_id == self.id}
         if movie_owners != [] && movie_owners.any?{ |m| m.rating }
