@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+    before_action :require_login
 
     def show
         @movie = Movie.find_by(id: params[:id])
