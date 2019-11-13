@@ -9,6 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <h1> Movie Database </h1>
     <% if current_user %>
+      Hello, <%= current_user.username %> <br>
       <%= link_to "Sign out", logout_path %>  |  <%= link_to "Your page", user_path(current_user) %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>  |  <%= link_to "Login in", login_path %>
@@ -21,6 +22,6 @@
   <body>
     <%= yield %> 
   _______________________________________________________________________________ <br>
-  <i> <%= link_to "all movies", movies_path %> | <%= link_to "all users", users_path %> </i>
+  <i> <%= link_to "all movies", movies_path %> | <%= link_to "all users", users_path %> </i> 
   </body>
 </html>
