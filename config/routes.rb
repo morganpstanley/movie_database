@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   end
 
   resources :movies
+
+  namespace :admin do
+    resources :movies, only: [:new, :create, :edit, :update]
+  end
   
   root 'users#index'
   get '/login', to: 'sessions#signin'
