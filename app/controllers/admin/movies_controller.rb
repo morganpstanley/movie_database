@@ -1,4 +1,5 @@
 class Admin::MoviesController < ApplicationController
+    before_action :require_admin
 
     def new
         @movie = Movie.new
@@ -29,8 +30,8 @@ private
         params.require(:movie).permit(:name, :director, :release_date, :genre)
     end
 
-    def require_login
-        return head(:forbidden) unless session.include?(:user_id)
+    def require_admin
+        return head(:forbidden) unless current_user.admin?
     end
 
 end
