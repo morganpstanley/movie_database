@@ -14,6 +14,15 @@ class MoviesController < ApplicationController
         end
     end
 
+    def released_before
+        if params[:user_id]
+            user = User.find_by(id: params[:user_id])
+            @movies = user.movies.released_before(params[:date])
+        else
+            @movies = Movie.released_before(params[:date])
+        end
+    end
+
 private
 
     def require_login

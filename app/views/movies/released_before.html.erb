@@ -1,0 +1,7 @@
+<% @movies.each do |m| %>
+<%= link_to m.name, movie_path(m) %> Year released: <%= m.release_date%> <br>
+<% end %>
+
+<% if @movies.empty? %>
+    Sorry, no movies match your criteria. <br>
+<% end %>
