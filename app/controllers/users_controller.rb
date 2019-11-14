@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end
 
     def new
+        redirect_if_logged_in
         @user = User.new
     end
 

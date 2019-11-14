@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
     def find_user
         @user = User.find_by(id: params[:id])
     end
+
+    def redirect_if_logged_in
+        if current_user
+            redirect_to user_path(current_user)
+        end
+    end
+    
 end
