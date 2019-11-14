@@ -7,17 +7,17 @@
 <% end %>
 
 <br>
-See movies in collection before a certain date:
+See all movies in this collection before a certain date:
 <%= form_tag '/movies/released_before', method: :get %>
     <% if @user %>
         <%= hidden_field_tag 'user_id', @user.id %>
     <% end %>
     <%= text_field_tag 'date' %>
 <%= submit_tag "Search "%>
-<br><br>
 
-Add movie to your collection: <br>
 <% if current_user == @user %>
+    <br><br>
+    Add movie to your collection: <br>
     <%= form_tag "/users/#{current_user.id}/movies" %>
     <%= select_tag "movie_id", options_from_collection_for_select(Movie.all, "id", "name"), include_blank: "" %>
     <%= select_tag "rating", options_for_select([*1..10]), include_blank: "No Rating" %>
