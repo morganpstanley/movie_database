@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   
   #session routes
-  get '/login', to: 'sessions#signin'
+  get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
   match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
