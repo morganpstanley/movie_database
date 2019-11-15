@@ -1,0 +1,5 @@
+   Add movie to your collection: <br>
+    <%= form_tag "/users/#{current_user.id}/movies" %>
+    <%= select_tag "movie_id", options_from_collection_for_select(Movie.all, "id", "name"), include_blank: "" %>
+    <%= select_tag "rating", options_for_select([*1..10]), include_blank: "No Rating" %>
+    <%= submit_tag "Add Movie" %>
