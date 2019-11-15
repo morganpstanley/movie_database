@@ -14,6 +14,18 @@ class MoviesController < ApplicationController
         end
     end
 
+    def new
+        @movie = Movie.new
+    end
+
+    def create
+        movie = Movie.find_by(id: params.require(:movie_id))
+        if current_user.movies.exclude?(movie)
+            UserMovie.create(movie_id: movie.id, user_id: current_user.id, rating: params.permit(:rating))
+        end
+        redirect_to user_movies_path(current_user)
+    end
+
     def released_before
         if params[:user_id]
             user = User.find_by(id: params[:user_id])

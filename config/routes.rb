@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'sessions#signin'
+  root 'sessions#login'
 
   #user routes
   resources :users do 
-    resources :movies, only: [:index]
+    resources :movies, only: [:index, :new, :create]
   end
-  post '/users/:id/movies', to: 'users#add_movie'
+  #post '/users/:id/movies', to: 'users#add_movie'
 
   #movie routes
   get '/movies/released_before', to: 'movies#released_before'
