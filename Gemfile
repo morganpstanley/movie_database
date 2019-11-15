@@ -23,7 +23,7 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'dotenv-rails'
-gem 'thin', group: :development
+gem 'puma'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 
 # Use Active Storage variant
