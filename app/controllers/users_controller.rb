@@ -25,18 +25,6 @@ class UsersController < ApplicationController
         end  
     end
 
-    def signin
-        @user = User.new
-    end
-
-    def add_movie
-        movie = Movie.find_by(id: params.require(:movie_id))
-        if current_user.movies.exclude?(movie)
-            UserMovie.create(movie_id: movie.id, user_id: current_user.id, rating: params.require(:rating))
-        end
-        redirect_to user_movies_path(current_user)
-    end
-
 private
 
     def user_params

@@ -6,8 +6,11 @@
 <%= link_to m.name, movie_path(m) %> User Rating: <%= m.avg_rating%> <br>
 <% end %>
 
+<br>
+
 <% if @user == current_user %>
     <%= link_to "Add a movie", new_user_movie_path(current_user) %> <br>
+    <%= link_to "Remove a movie", edit_movie_path(current_user) %> <br>
 <% end %>
 
 <br>

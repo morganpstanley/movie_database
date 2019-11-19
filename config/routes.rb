@@ -4,12 +4,14 @@ Rails.application.routes.draw do
 
   #user routes
   resources :users do 
-    resources :movies, only: [:index, :new, :create]
+    resources :movies, only: [:index]
+    resources :movies, only: [:new, :create, :edit, :destroy], controller: 'user_movies', as: 'movies', shallow: true
   end
-  #post '/users/:id/movies', to: 'users#add_movie'
 
   #movie routes
   get '/movies/released_before', to: 'movies#released_before'
+  # get '/movies/remove_movie', to: 'movies#remove_movie'
+  # get '/movies/removie_movie_from_list', to: 'users#remove_movie'
   resources :movies
 
   #admin routes

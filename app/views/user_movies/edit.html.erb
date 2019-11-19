@@ -1,0 +1,5 @@
+Click a movie to remove it from your list: <br><br>
+
+<% @movies.each do |m| %>
+<%= link_to(m.name, movie_path(m), method: :delete ) %> User Rating: <%= m.avg_rating%> <br>
+<% end %>
