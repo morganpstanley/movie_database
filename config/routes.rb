@@ -10,9 +10,7 @@ Rails.application.routes.draw do
 
   #movie routes
   get '/movies/released_before', to: 'movies#released_before'
-  # get '/movies/remove_movie', to: 'movies#remove_movie'
-  # get '/movies/removie_movie_from_list', to: 'users#remove_movie'
-  resources :movies
+  resources :movies, only: [:show, :index, :create]
 
   #admin routes
   namespace :admin do
