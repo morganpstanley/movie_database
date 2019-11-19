@@ -15,10 +15,12 @@ class MoviesController < ApplicationController
     end
 
     def new
+        redirect_if_not_admin
         @movie = Movie.new
     end
 
     def create
+        redirect_if_not_admin
         movie = Movie.find_by(id: params.require(:movie_id))
         if current_user.movies.exclude?(movie)
             UserMovie.create(movie_id: movie.id, user_id: current_user.id, rating: params.permit(:rating))
@@ -39,6 +41,12 @@ private
 
     def require_login
         return head(:forbidden) unless session.include?(:user_id)
+    end
+
+    def redirect_if_not_admin
+        unless current_user.admin?
+            redirect_to user_path(current_user)
+        end
     end
 
 end
