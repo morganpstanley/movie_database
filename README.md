@@ -1,24 +1,12 @@
-# README
+# Movie_Database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project I worked on for the Software Development Course at Flatiron. It uses a combination of Ruby on Rails and HTML to make a simple movie database where users can add movies to their own collection, or view other users collections. 
 
-Things you may want to cover:
+## Can I Use the Movie_Database?
+Because this project allows users to login in through Github, loading it onto your own machine won't do much as the key and secret have not been uploaded. 
 
-* Ruby version
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com//movie_tracker.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+This code is available as open source under the terms of the MIT License. https://opensource.org/licenses/MIT
