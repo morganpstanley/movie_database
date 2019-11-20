@@ -13,20 +13,5 @@ class User < ApplicationRecord
             u.password_confirmation = u.password
         end
     end
-
-
-    # def create
-    #     binding.pry
-    #     @user = User.find_or_create_by(uid: auth['uid']) do |u|
-    #         u.username = auth['info']['nickname']
-    #         u.email = auth['info']['email']
-    #         u.password = SecureRandom.hex
-    #     end
-    #    binding.pry
-    #     session[:user_id] = @user.id
-       
-    #     redirect_to '/users/'
-    # end
-
     
 end
