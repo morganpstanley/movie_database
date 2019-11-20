@@ -3,3 +3,7 @@
 <i> Released: </i> <%= @movie.release_date %> <br>
 <i> Genre: </i> <%= @movie.genre %> <br>
 <i> User rating: </i> <%= @movie.avg_rating %> </i> <br>
+
+<% if current_user.admin? %>
+    <%= link_to "Edit Movie", edit_admin_movie_path %>
+<% end %>

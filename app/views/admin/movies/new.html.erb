@@ -1,35 +1,3 @@
 <%= form_with model: @movie, url: admin_movies_path, local: true do |f| %>
-  <% if @movie.errors.any? %>
-    <div id="error_explanation">
-      <i>ERROR:</i>
-      <ul>
-        <% @movie.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
- 
-  <div class="field<%= ' field_with_errors' if @movie.errors[:name].any? %>">
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name, value: @movie.name %>
-  </div>
- 
-  <div class="field<%= ' field_with_errors' if @movie.errors[:director].any? %>">
-    <%= f.label :director, "Director" %>
-    <%= f.text_field :director, value: @movie.director %>
-  </div>
-
-  <div class="field<%= ' field_with_errors' if @movie.errors[:release_date].any? %>">
-    <%= f.label :release_date, "Release Date" %>
-    <%= f.text_field :release_date, value: @movie.release_date %>
-  </div>
-
-  <div class="field<%= ' field_with_errors' if @movie.errors[:genre].any? %>">
-    <%= f.label :genre, "Genre" %>
-    <%= f.text_field :genre, value: @movie.genre %>
-  </div>
- 
-  <%= f.submit "Create" %>
+    <%= render partial: 'form', locals: {movie: @movie, f: f, submit_keyword: "Create New Movie" } %>
 <% end %>

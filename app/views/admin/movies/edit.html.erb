@@ -1,7 +1,3 @@
-<%= form_with model: @movie, url: admin_movie_path do |f| %>
-    Name: <%= f.text_field :name %> <br>
-    Director: <%= f.text_field :director %> <br>
-    Release_date : <%= f.text_field :release_date %> <br>
-    Genre: <%= f.text_field :genre %> <br>
-    <%= f.submit "Save Changes" %>
+<%= form_with model: @movie, url: admin_movie_path, local: true do |f| %>
+    <%= render partial: 'form', locals: {movie: @movie, f: f, submit_keyword: "Update Movie" } %>
 <% end %>
