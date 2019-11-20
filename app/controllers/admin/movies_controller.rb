@@ -19,9 +19,12 @@ class Admin::MoviesController < ApplicationController
     end
 
     def update
-        movie = Movie.find_by(id: params[:id])
-        movie.update(movie_params)
-        redirect_to movie_path(movie)
+        @movie = Movie.find_by(id: params[:id])
+        if @movie.update(movie_params)
+            redirect_to movie_path(@movie)
+        else
+            render :edit
+        end
     end
 
 private
