@@ -1,0 +1,38 @@
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+        <i>ERROR:</i>
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+         </ul>
+    </div>
+<% end %>
+
+<h1> <%= page_title %> </h1>
+
+<%= form_with model: @user, local: true do |f| %>
+
+    <div class="field<%= ' field_with_errors' if user.errors[:username].any? %>">
+        <%= f.label :username, "Username" %>
+        <%= f.text_field :username, value: user.username %>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if user.errors[:email].any? %>">
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email, value: user.email %>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if user.errors[:password].any? %>">
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div class="field<%= ' field_with_errors' if user.errors[:password_confirmation].any? %>">
+        <%= f.label :password_confirmation, "Password Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+
+    <%= f.submit submit_button_name %>
+
+<% end %>
