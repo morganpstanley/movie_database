@@ -27,6 +27,11 @@ class Admin::MoviesController < ApplicationController
         end
     end
 
+    def destroy
+        Movie.find_by(id: params[:id]).delete
+        redirect_to movies_path
+    end
+
 private
 
     def movie_params

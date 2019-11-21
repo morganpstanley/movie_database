@@ -1,3 +1,7 @@
 <%= form_with model: @movie, url: admin_movie_path, local: true do |f| %>
     <%= render partial: 'form', locals: {movie: @movie, f: f, submit_keyword: "Update Movie" } %>
 <% end %>
+
+<br>
+
+<%= button_to "Delete This Movie", admin_movie_path, method: :delete,  data: { confirm: 'Are you sure you want to delete this movie?' } %>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   #admin routes
   namespace :admin do
-    resources :movies, only: [:new, :create, :edit, :update]
+    resources :movies, only: [:new, :create, :edit, :update, :destroy]
   end
   
   #session routes
