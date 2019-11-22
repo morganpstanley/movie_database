@@ -22,6 +22,8 @@
     <%= yield %> 
     <br>
     _______________________________________________________________________________ <br>
-    <i> <%= link_to "all movies", movies_path %> | <%= link_to "all users", users_path %> </i> 
+    <% if current_user %>
+      <i> <%= link_to "all movies", movies_path %> | <%= link_to "all users", users_path %> </i> 
+    <% end %>
   </body>
 </html>
