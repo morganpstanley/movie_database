@@ -1,0 +1,27 @@
+<%= form_with model: @actor, url: actors_path, local: true  do |f| %>
+
+    <% if @actor.errors.any? %>
+    <div id="error_explanation">
+        <i>ERROR:</i>
+        <ul>
+            <% @actor.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+         </ul>
+    </div>
+<% end %>
+    
+    <div class="field<%= ' field_with_errors' if @actor.errors[:name].any? %>">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, value: @actor.name %>
+    </div>
+
+    <br>
+
+    <div class="field<%= ' field_with_errors' if @actor.errors[:movie_id].any? %>">
+    <%= f.label :movie, "Movie"%>
+    <%= f.select "movie_id", options_from_collection_for_select(Movie.all, "id", "name"), include_blank: "" %>
+    <%= f.submit "Add Actor" %>
+    </div>
+
+<% end %>

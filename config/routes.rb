@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :actors
   root 'sessions#login'
+
+  resources :actors, only: [:new, :create, :show]
 
   #user routes
   resources :users do 
