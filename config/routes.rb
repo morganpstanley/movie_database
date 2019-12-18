@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :actors
   root 'sessions#login'
 
   #user routes

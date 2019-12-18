@@ -5,11 +5,16 @@ class UserMoviesController < ApplicationController
     end
 
     def create
-        movie = Movie.find_by(id: params[:movie_id])
-        if current_user.movies.exclude?(movie)
-            UserMovie.create(movie_id: movie.id, user_id: current_user.id, rating: params.permit(:rating))
+        if params[:movie_id].present?
+            movie = Movie.find_by(id: params[:movie_id])
+            if current_user.movies.exclude?(movie)
+                UserMovie.create(movie_id: movie.id, user_id: current_user.id, rating: params.permit(:rating))
+            end
+            redirect_to user_movies_path(current_user)
+        else
+            @error = "ERROR: Please choose a movie"
+            render :new
         end
-        redirect_to user_movies_path(current_user)
     end
 
     def edit

@@ -19,12 +19,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'pry'
-gem 'omniauth'
-gem 'omniauth-github'
-gem 'dotenv-rails'
 gem 'puma'
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'thin'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -46,6 +42,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry'
+  gem 'omniauth'
+  gem 'omniauth-github'
+  gem 'dotenv-rails'
+  gem 'omniauth-rails_csrf_protection', '~> 0.1'
 end
 
 group :test do
